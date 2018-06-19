@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<abc tou="同意" color="red"></abc>
+		<abc tou="中立" color="blue"></abc>
+		<abc tou="反对" color="green"></abc>
+		
+	</div>
+
+	<!-- template模板 -->
+	<template id="b-template">
+		<div >
+			<h5 >{{ tou }}</h5>
+			<button @click="count+=1" :style="{background:color}">{{ count }}</button>
+		</div>
+	</template>
+
+	<script src="vue.js"></script>
+	<script>
+		Vue.component("abc",{
+			// template:'<h1>这是一个组件</h1>'
+			template:'#b-template',
+			data:function(){
+				return { count : 0}
+			},
+			props:['tou','color']
+		});
+		new Vue({
+			el:"#app"
+		});
+	</script>
+</body>
+</html>
